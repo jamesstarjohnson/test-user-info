@@ -7,8 +7,9 @@ type CardProps = {
 } & User;
 
 function Card(props: CardProps) {
-  const [id, setId] = useState(props.id);
   const [age, setAge] = useState(props.age);
+  const [sex, setSex] = useState(props.sex);
+
   return (
     <div className={styles.card}>
       <button
@@ -18,20 +19,29 @@ function Card(props: CardProps) {
         x
       </button>
       <div className={styles.inner}>
-        <span className={styles.label}>id:</span>
-        <input
-          type="text"
-          value={id}
-          onChange={(e) => setId(+e.target.value)}
-        />
+        <label className={styles.label}>id:</label>
+        <input maxLength={8} type="text" value={props.id} disabled />
       </div>
       <div className={styles.inner}>
-        <span className={styles.label}>age:</span>
+        <label className={styles.label}>age:</label>
         <input
+          min={0}
+          max={120}
           type="number"
           value={age}
           onChange={(e) => setAge(+e.target.value)}
         />
+      </div>
+      <div className={styles.inner}>
+        <label className={styles.label}>sex:</label>
+        <select
+          value={sex}
+          onChange={(e) => setSex(e.target.value as User["sex"])}
+          name="sex"
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
       </div>
     </div>
   );

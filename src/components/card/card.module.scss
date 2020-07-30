@@ -2,7 +2,7 @@
   width: 50%;
   height: 50%;
   border: 1px solid silver;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   position: relative;
 
@@ -19,7 +19,8 @@
       flex: 1;
     }
 
-    & > input {
+    & > input,
+    select {
       flex: 3;
     }
   }
