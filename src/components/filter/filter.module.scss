@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+}
+
+.clear {
+  margin-right: 10px;
+}
+
+.id,
+.remove,
+.age {
+  display: none;
+}
+
+.sex,
+.english {
+  display: flex;
+  flex: 1;
+  input,
+  select {
+    margin: 0 10px;
+    flex: 1;
+  }
+}

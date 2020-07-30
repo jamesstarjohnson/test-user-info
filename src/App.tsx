@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Card from "./components/card";
 import Info from "./components/info";
-import { User } from "./types";
+import Filter from "./components/filter";
+import { User, Filtered } from "./types";
 import styles from "./app.module.scss";
 
-const sexSet = new Set(["male", "female"]);
+export const sexSet = new Set(["male", "female"]);
 export const englishSet = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 const idsSet = new Set();
 
@@ -41,6 +42,7 @@ const getUser = (values: string[]): User | undefined => {
 
 function App() {
   const [users, setUser] = useState<User[]>([]);
+  const [filtered, setFiltered] = useState<Filtered>();
 
   const handleSubmit = (value: string) => {
     const values = value.split(",");
@@ -59,15 +61,32 @@ function App() {
     setUser(users.map((u) => (u.id === user.id ? user : u)));
   };
 
-  console.log(users);
+  // TODO memoise
+  const getUsers = () => {
+    if (filtered === undefined) {
+      return users;
+    }
+    return users.filter(
+      (user) =>
+        user.sex === filtered.sex && user.englishLevel === filtered.englishLevel
+    );
+  };
 
   return (
     <div className={styles.app}>
-      <Info onSubmit={handleSubmit} />
+      <section className={styles.actionPanel}>
+        <Info onSubmit={handleSubmit} />
+        <Filter onFilter={setFiltered} />
+      </section>
       <ul className={styles.list}>
-        {users.map((value) => (
+        {getUsers().map((value) => (
           <li key={value.id}>
-            <Card {...value} onRemove={handleRemove} onUpdate={handleUpdate} />
+            <Card
+              {...value}
+              submitText="Update"
+              onRemove={handleRemove}
+              onSubmit={handleUpdate}
+            />
           </li>
         ))}
       </ul>

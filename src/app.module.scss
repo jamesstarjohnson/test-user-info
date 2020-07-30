@@ -1,8 +1,24 @@
+$height: 100px;
+
 .app {
   .list {
     list-style-type: none;
-    margin: 50px auto;
+    margin: $height auto;
     padding: 10px;
     width: 50%;
+  }
+
+  .actionPanel {
+    display: flex;
+    width: 50%;
+    height: $height;
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    z-index: 1;
   }
 }
