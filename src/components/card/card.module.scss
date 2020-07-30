@@ -1,0 +1,17 @@
+.card {
+  width: 50%;
+  height: 50%;
+  border: 1px solid silver;
+  margin: 0 auto;
+
+  .inner {
+    display: flex;
+    & > .label {
+      flex: 1;
+    }
+
+    & > input {
+      flex: 3;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.info {
+  margin: 20px auto;
+  display: flex;
+  width: 50%;
+
+  label {
+    margin: 0 20px;
+    display: flex;
+    width: 100%;
+
+    input {
+      width: 100%;
+      margin: 0 10px;
+    }
+  }
+}
