@@ -6,9 +6,10 @@ import styles from "./app.module.scss";
 
 const sexSet = new Set(["male", "female"]);
 const englishSet = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
+const idsSet = new Set();
 
 const isAge = (age: number) => age > 0 && age < 120;
-const isID = (id: number) => String(id).length === 8;
+const isID = (id: number) => String(id).length === 8 && !idsSet.has(id);
 
 const getUser = (values: string[]): User | undefined => {
   let sex: User["sex"] | undefined = undefined;
@@ -24,6 +25,7 @@ const getUser = (values: string[]): User | undefined => {
       age = Number(value) as User["age"];
     } else if (!isNaN(Number(value)) && isID(Number(value))) {
       id = Number(value) as User["id"];
+      idsSet.add(id);
     }
   });
   if (sex && age && id && englishLevel) {
@@ -47,13 +49,19 @@ function App() {
       setUser([...users, user]);
     }
   };
+
+  const handleRemove = (id: number) => {
+    setUser(users.filter((u) => u.id !== id));
+    idsSet.delete(id);
+  };
+
   return (
     <div className={styles.app}>
       <Info onSubmit={handleSubmit} />
       <ul className={styles.list}>
         {users.map((value) => (
           <li key={value.id}>
-            <Card {...value} />
+            <Card {...value} onRemove={handleRemove} />
           </li>
         ))}
       </ul>

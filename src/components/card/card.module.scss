@@ -3,9 +3,18 @@
   height: 50%;
   border: 1px solid silver;
   margin: 0 auto;
+  padding: 20px;
+  position: relative;
+
+  .remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
 
   .inner {
     display: flex;
+    padding: 10px;
     & > .label {
       flex: 1;
     }
@@ -14,4 +23,10 @@
       flex: 3;
     }
   }
+}
+
+.remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
