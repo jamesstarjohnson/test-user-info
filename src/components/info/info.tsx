@@ -8,11 +8,13 @@ function Info(props: { onSubmit: (value: string) => void }) {
     e.preventDefault();
     props.onSubmit(value);
   };
+
   return (
     <form className={styles.info} onSubmit={handleSubmit}>
       <label>
         Data:
         <input
+          autoFocus={true}
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}

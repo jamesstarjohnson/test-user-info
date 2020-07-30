@@ -5,7 +5,7 @@ import { User } from "./types";
 import styles from "./app.module.scss";
 
 const sexSet = new Set(["male", "female"]);
-const englishSet = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
+export const englishSet = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 const idsSet = new Set();
 
 const isAge = (age: number) => age > 0 && age < 120;
