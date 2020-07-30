@@ -5,6 +5,7 @@ import styles from "./card.module.scss";
 
 type CardProps = {
   onRemove: (id: number) => void;
+  onUpdate: (user: User) => void;
 } & User;
 
 function Card(props: CardProps) {
@@ -19,6 +20,12 @@ function Card(props: CardProps) {
         onClick={() => props.onRemove(props.id)}
       >
         x
+      </button>
+      <button
+        className={styles.update}
+        onClick={() => props.onUpdate({ id: props.id, age, sex, englishLevel })}
+      >
+        update
       </button>
       <div className={styles.inner}>
         <label className={styles.label}>id:</label>

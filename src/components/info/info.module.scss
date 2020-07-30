@@ -1,7 +1,13 @@
 .info {
-  margin: 20px auto;
+  padding: 20px;
   display: flex;
   width: 50%;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background-color: white;
+  z-index: 1;
 
   label {
     margin: 0 20px;

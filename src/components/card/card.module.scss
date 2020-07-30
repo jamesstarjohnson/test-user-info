@@ -3,13 +3,19 @@
   height: 50%;
   border: 1px solid silver;
   margin: 20px auto;
-  padding: 20px;
+  padding: 30px;
   position: relative;
 
   .remove {
     position: absolute;
     top: 5px;
     right: 5px;
+  }
+
+  .update {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
   }
 
   .inner {

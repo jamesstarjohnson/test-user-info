@@ -55,13 +55,19 @@ function App() {
     idsSet.delete(id);
   };
 
+  const handleUpdate = (user: User) => {
+    setUser(users.map((u) => (u.id === user.id ? user : u)));
+  };
+
+  console.log(users);
+
   return (
     <div className={styles.app}>
       <Info onSubmit={handleSubmit} />
       <ul className={styles.list}>
         {users.map((value) => (
           <li key={value.id}>
-            <Card {...value} onRemove={handleRemove} />
+            <Card {...value} onRemove={handleRemove} onUpdate={handleUpdate} />
           </li>
         ))}
       </ul>
